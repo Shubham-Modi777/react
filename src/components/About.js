@@ -16,27 +16,46 @@ import React from "react";
 class About extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Parent Constructor");
+    //console.log("Parent Constructor");
   }
 
   componentDidMount() {
-    console.log("Parent component Did Mount");
+    //console.log("Parent component Did Mount");
   }
 
   render() {
-    console.log("Parent render");
+    //console.log("Parent render");
     return (
       <div>
         <h1>About</h1>
         <h2>This is about page of dummy Food point APP.</h2>
         <User name={"Shubham Modi functional"} location={"Pune, Maharastra"} />
         <UserClass name={"First child"} location={"Dhanbad, Jharkhand"} />
-        <UserClass name={"Second child"} location={"Dhanbad, Jharkhand"} />
-        <UserClass name={"Third child"} location={"Dhanbad, Jharkhand"} />
-        <UserClass name={"Forth child"} location={"Dhanbad, Jharkhand"} />
       </div>
     );
   }
 }
 
 export default About;
+
+/**
+ * ------MOUNTING-------
+ *
+ * constructor(dummy)
+ * render(dummy)
+ *    <HTML dummy>
+ * component did mount
+ *    <API Call>
+ *    <this.setState()>
+ *
+ * -----Update
+ *  render(API data)
+ *      <HTML Loaded with API data>
+ * component did update
+ *
+ *
+ * -----UNMOUNT-------
+ * when move to other page
+ *    component will unmount
+ *
+ */
