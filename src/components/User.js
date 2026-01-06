@@ -7,14 +7,6 @@ const User = ({ name, location }) => {
 
   return (
     <div className="user-card">
-      <h2>Count: {count}</h2>
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        Add Count
-      </button>
       <h3>Name: {name}</h3>
       <h3>Location: {location}</h3>
       <h4>Contact: shubham@gamil.com</h4>
