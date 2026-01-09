@@ -4,13 +4,13 @@ import { RestData } from "../utils/mockData";
 
 const MenuCategorys = ({ category }) => (
   <>
-    <h3>{category.title}</h3>
+    <h3 className="text-xl font-bold text-orange-900">{category.title}</h3>
     <ul>
       {category.itemCards.map((item) => {
         const price =
           item.card.info.price / 100 || item.card.info.defaultPrice / 100;
         return (
-          <li key={item.card.info.id}>
+          <li key={item.card.info.id} className="text-lg">
             {item.card.info.name} - Rs.{price}
           </li>
         );
@@ -44,12 +44,12 @@ const RestaurantMenu = () => {
   return restInfo === null ? (
     <Shimmer />
   ) : (
-    <div className="menu">
-      <h1>
+    <div className="p-3 m-3">
+      <h1 className="text-blue-700 text-xl">
         {cardInfo.name} ⭐ {cardInfo.avgRatingString} (
         {cardInfo.totalRatingsString})
       </h1>
-      <h4 className="cuisines">
+      <h4 className="gap-2 text-fuchsia-700 text-xl">
         {cardInfo.cuisines.join(", ")} ⚫ {cardInfo.costForTwoMessage}
       </h4>
       {restInfo.categories.map((category) => (

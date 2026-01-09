@@ -48,18 +48,19 @@ const Body = () => {
   return listOfRes.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="m-1">
+      <div className="flex m-1">
+        <div className="flex items-center gap-2 p-2 ">
           <input
             type="text"
-            className="search-box"
+            className="border rounded-sm"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
+            className="text-sm text-amber-50 p-1 m-b-1 bg-blue-600 rounded-sm"
             onClick={() => {
               let searchFilter = filteredRes.filter((res) => {
                 // with {} , we need to use return statement but without {} it's implicit return
@@ -74,7 +75,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter-btn"
+          className="p-1 m-2  text-amber-50 bg-green-600 rounded-sm border-none hover:bg-amber-800 cursor-pointer"
           onClick={() => {
             let filteredList = listOfRes.filter(
               (res) => res.info.avgRating > 4.1
@@ -85,7 +86,7 @@ const Body = () => {
           Top Rated Restaurants
         </button>
         <button
-          className="filter-btn"
+          className="p-1 m-2  text-amber-50 bg-green-600 rounded-sm border-none hover:bg-amber-800 cursor-pointer"
           onClick={() => {
             const wanted = new Set([
               "KFC",
@@ -102,7 +103,7 @@ const Body = () => {
           My fav Restaurants
         </button>
       </div>
-      <div className="rest-container">
+      <div className="flex flex-wrap gap-2">
         {listOfRes.map((res) => (
           <RestaurantCard key={res.info.id} resData={res.info} />
         ))}

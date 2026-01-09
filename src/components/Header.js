@@ -8,14 +8,19 @@ const Header = () => {
   const OnlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
+    <div className="flex justify-between items-center p-5 bg-amber-100 border-solid border-amber-200 rounded-2xl m-2">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <img
+          className="w-25 h-auto contain-content rounded-2xl"
+          src={LOGO_URL}
+        />
         <h1>My Food Point 💕</h1>
       </div>
       <div className="nav-items">
-        <ul>
-          <li>Online Status: {OnlineStatus ? "✅" : "🔴"}</li>
+        <ul className="flex gap-4 font-medium p-1 text-amber-950">
+          <li className="text-black">
+            Online Status: {OnlineStatus ? "✅" : "🔴"}
+          </li>
           <li>
             <Link to={"/"}>Home</Link>
           </li>
@@ -30,7 +35,7 @@ const Header = () => {
           </li>
           <li>Cart</li>
           <button
-            className="login-btn"
+            className=" text-sm text-amber-50 p-1 m-b-1 bg-blue-600 rounded-sm"
             onClick={() => {
               btnName === "login" ? setBtnName("logout") : setBtnName("login");
             }}
