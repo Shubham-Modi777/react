@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Simmer";
 import { RestData } from "../utils/mockData";
+import RestaurantCategory from "./RestaurantCategory";
 
 const MenuCategorys = ({ category }) => (
   <>
@@ -24,9 +25,18 @@ const RestaurantMenu = () => {
   const data =
     RestData[0]?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
       ?.card?.card;
-  console.log("RestData:", data);
+  //console.log("RestData:", data);
 
   const cardInfo = RestData[0]?.data?.cards[2]?.card?.card?.info;
+
+  const categories =
+    RestData[0]?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (cat) =>
+        cat.card.card.type ===
+        "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+    );
+
+  console.log("categoryData", categories);
 
   useEffect(() => {
     //fetchMenu();
@@ -45,16 +55,27 @@ const RestaurantMenu = () => {
     <Shimmer />
   ) : (
     <div className="p-3 m-3">
-      <h1 className="text-blue-700 text-xl">
+      {/* <h1 className="text-blue-700 text-xl">
         {cardInfo.name} ⭐ {cardInfo.avgRatingString} (
         {cardInfo.totalRatingsString})
       </h1>
       <h4 className="gap-2 text-fuchsia-700 text-xl">
         {cardInfo.cuisines.join(", ")} ⚫ {cardInfo.costForTwoMessage}
-      </h4>
-      {restInfo.categories.map((category) => (
+      </h4> */}
+      {/* {restInfo.categories.map((category) => (
         <MenuCategorys key={category.title} category={category} />
-      ))}
+      ))} */}
+      <div>
+        {/* Category accordian */}
+        {categories.map((category) => {
+          return (
+            <RestaurantCategory
+              key={category?.card?.card?.categoryId}
+              data={category?.card?.card}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

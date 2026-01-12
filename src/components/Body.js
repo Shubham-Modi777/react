@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { WithBestLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Simmer";
@@ -11,6 +11,7 @@ const Body = () => {
   const [filteredRes, setFilteredRes] = useState([]);
 
   const OnlineStatus = useOnlineStatus();
+  const BestLabelCard = WithBestLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -28,7 +29,7 @@ const Body = () => {
       jason?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
 
-    console.log("jason", resList);
+    //console.log("jason", resList);
 
     setListOfRes(resList);
     setFilteredRes(resList);
@@ -53,14 +54,15 @@ const Body = () => {
         <div className="flex items-center gap-2 p-2 ">
           <input
             type="text"
-            className="border rounded-sm"
+            className="border rounded-sm justify-center p-1"
+            placeholder="Search your meal🍔🍗..."
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="text-sm text-amber-50 p-1 m-b-1 bg-blue-600 rounded-sm"
+            className="text-sm font-normal text-amber-50 p-1 m-b-1 w-20 bg-blue-500 rounded-sm cursor-pointer"
             onClick={() => {
               let searchFilter = filteredRes.filter((res) => {
                 // with {} , we need to use return statement but without {} it's implicit return
@@ -104,9 +106,13 @@ const Body = () => {
         </button>
       </div>
       <div className="flex flex-wrap gap-2">
-        {listOfRes.map((res) => (
-          <RestaurantCard key={res.info.id} resData={res.info} />
-        ))}
+        {listOfRes.map((res) =>
+          res.info.avgRating >= 4.4 ? (
+            <BestLabelCard key={res.info.id} resData={res.info} />
+          ) : (
+            <RestaurantCard key={res.info.id} resData={res.info} />
+          )
+        )}
       </div>
     </div>
   );

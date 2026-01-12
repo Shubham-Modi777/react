@@ -1966,7 +1966,7 @@ export const RestData = [
                   {
                     card: {
                       card: {
-                        type: "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+                        type: "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory",
                         title: "Beverages",
                         itemCards: [
                           {
@@ -13184,7 +13184,7 @@ export const RestData = [
                   {
                     card: {
                       card: {
-                        type: "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+                        type: "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory",
                         title: "Rice And Pulav",
                         itemCards: [
                           {
@@ -13921,7 +13921,7 @@ export const RestData = [
                   {
                     card: {
                       card: {
-                        type: "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+                        type: "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory",
                         title: "Rotis And Parotas",
                         itemCards: [
                           {

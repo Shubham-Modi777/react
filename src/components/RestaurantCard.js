@@ -31,4 +31,19 @@ const RestaurantCard = (props) => {
   );
 };
 
+//Higher order component
+
+export const WithBestLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute text-white bg-black  p-1 rounded-lg w-auto text-center">
+          Best choice
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
