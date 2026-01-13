@@ -22,6 +22,8 @@ const MenuCategorys = ({ category }) => (
 
 const RestaurantMenu = () => {
   const [restInfo, setRestInfo] = useState(null);
+  const [showIndex, setShowIndex] = useState(null);
+
   const data =
     RestData[0]?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
       ?.card?.card;
@@ -54,24 +56,27 @@ const RestaurantMenu = () => {
   return restInfo === null ? (
     <Shimmer />
   ) : (
-    <div className="p-3 m-3">
-      {/* <h1 className="text-blue-700 text-xl">
-        {cardInfo.name} ⭐ {cardInfo.avgRatingString} (
-        {cardInfo.totalRatingsString})
-      </h1>
-      <h4 className="gap-2 text-fuchsia-700 text-xl">
-        {cardInfo.cuisines.join(", ")} ⚫ {cardInfo.costForTwoMessage}
-      </h4> */}
-      {/* {restInfo.categories.map((category) => (
-        <MenuCategorys key={category.title} category={category} />
-      ))} */}
+    <div className="p-3 m-3 ">
+      <div className="text-center">
+        {/* <h1 className="text-blue-700 text-xl font-bold shadow-2xl">
+          {cardInfo.name} ⭐ {cardInfo.avgRatingString} (
+          {cardInfo.totalRatingsString})
+        </h1> */}
+        <h4 className="gap-2 text-fuchsia-700 text-xl font-medium">
+          {/* {cardInfo.cuisines.join(", ")} ⚫ {cardInfo.costForTwoMessage} */}
+          Check below food items 🍔🍗 🍕🍟🍚🍨🧁...
+        </h4>
+      </div>
       <div>
+        {/* controled component */}
         {/* Category accordian */}
-        {categories.map((category) => {
+        {categories.map((category, index) => {
           return (
             <RestaurantCategory
               key={category?.card?.card?.categoryId}
               data={category?.card?.card}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
             />
           );
         })}

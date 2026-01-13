@@ -2,13 +2,12 @@ import ItemsList from "./ItemsList";
 import CategoriesItemList from "./CategoriesItemList";
 import { useState } from "react";
 
-const RestaurantCategory = ({ data }) => {
-  console.log("data", data);
-  const [showItems, setShowItems] = useState(false);
+const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
+  const [showItem, setShowItems] = useState(showItems);
 
   const handleClick = () => {
-    console.log("click");
-    setShowItems(!showItems);
+    setShowIndex();
+    setShowItems(!showItem);
   };
   return (
     <div>
@@ -29,7 +28,8 @@ const RestaurantCategory = ({ data }) => {
         </div>
         {/* body */}
         <div>
-          {showItems &&
+          {showItem &&
+            showItems &&
             (data?.itemCards ? (
               <ItemsList items={data?.itemCards} />
             ) : (
